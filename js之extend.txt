@@ -1,0 +1,22 @@
+1.extend(dest,src1,src2,src3...);== var newSrc=$.extend({},src1,src2,src3...)
+2.var result=$.extend({},{name:"Tom",age:21},{name:"Jerry",sex:"Boy"})
+==
+result={name:"Jerry",age:21,sex:"Boy"}
+注：后面的参数如果和前面的参数存在相同的名称，那么后面的会覆盖前面的参数值。
+3.$.extend($.net,{
+   hello:function(){alert('hello');}
+  })　 这是在jquery全局对象中扩展一个net命名空间。
+4.重载原型 extend(boolean,dest,src1,src2,src3...)
+var result=$.extend( true,  {},  
+    { name: "John", location: {city: "Boston",county:"USA"} },  
+    { last: "Resig", location: {state: "MA",county:"China"} } );
+==
+result={name:"John",last:"Resig",
+        location:{city:"Boston",state:"MA",county:"China"}}
+嵌套的子对象location也会被合并
+var result=$.extend( false, {},  
+{ name: "John", location:{city: "Boston",county:"USA"} },  
+{ last: "Resig", location: {state: "MA",county:"China"} }  
+                    ); 
+==
+result={name:"John",last:"Resig",location:{state:"MA",county:"China"}}
